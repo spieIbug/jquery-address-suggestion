@@ -1,7 +1,7 @@
 # jquery-address-suggestion
 A Jquery plugin for address autocomplete using Google Map Geocode API
 
-[JsFiddle Demo]: https://jsfiddle.net/yacmed/yp0xmdf5
+[jsFiddle Demo](https://jsfiddle.net/yacmed/yp0xmdf5/)
 ## Install using npm :
 ```
 npm install jquery-address-suggestion
