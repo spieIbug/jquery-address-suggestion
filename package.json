@@ -1,5 +1,5 @@
 {
-  "name": "address-suggestions",
+  "name": "jquery-address-suggestion",
   "version": "1.0.0",
   "description": "A jquery plugin for address autocomplete",
   "main": "app.js",
