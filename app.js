@@ -34,10 +34,11 @@ $.fn.extend({
 			label : "Country"
 		}
 	}
+	$("<div class=\"suggestions-container\" id=\"suggestions-container\"></div>" ).insertAfter(input);
 	for (var key in fields){
 		$("label[for = '"+fields[key].id+"']").html(fields[key].label);
 	}
-	$("label[for = '"+input+"']").html(fields.label);
+	$("label[for = '"+input.attr('id')+"']").html(fields.label);
 	$(input).on("input", function(){
 		$.ajax({
 			url: "https://maps.googleapis.com/maps/api/geocode/json?address="+this.value
@@ -49,14 +50,19 @@ $.fn.extend({
 				}
 			}
 			$(".suggestions-container").html(format(suggestedAddresses));
+			$(".suggestions-container").show();
 			$("div.suggestions-container-row").hover(function() {
 				$("div.suggestions-container-row").css('background','#ffffff');
 				selectedAddressIndex = $(this).attr("data-index");
 				$(input).val(suggestedAddresses[selectedAddressIndex].formatted);
-				$("#address_"+selectedAddressIndex).focus();
-				$("#address_"+selectedAddressIndex).css('background','#9191e9');
+				$(this).focus();
+				$(this).css('background','#9191e9');
+			}).click(function(){
+				selectedAddressIndex = $(this).attr("data-index");
+				$(input).val(suggestedAddresses[selectedAddressIndex].formatted);
+				fillFields(fields);
+				$(".suggestions-container").hide();
 			});
-			$(".suggestions-container").show();
 		}).fail(function(){
 			$(".suggestions-container").hide();
 		});
@@ -91,10 +97,12 @@ $.fn.extend({
 				break;
 			}
 			case 13: {
+				fillFields(fields);
 				$(".suggestions-container").hide();
 				break;
 			}
 			case 27: {
+				fillFields(fields);
 				$(".suggestions-container").hide();
 				break;
 			}
