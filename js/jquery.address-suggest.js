@@ -45,6 +45,7 @@ $.fn.extend({
 	}
 	$("label[for = '"+input.attr('id')+"']").html(fields.label);
 	$(input).on("input", function(){
+		selectedAddressIndex = -1;
 		$.ajax({
 			url: "https://maps.googleapis.com/maps/api/geocode/json?address="+this.value
 		}).done(function(response) {
