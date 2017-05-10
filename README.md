@@ -1,13 +1,18 @@
 # jquery-address-suggestion
-A Jquery plugin for address autocomplete using Google Map Geocode API
+A jquery plugin for address autocomplete using Google Map Geocode API
 
 [jsFiddle Demo](https://jsfiddle.net/yacmed/yp0xmdf5/)
+
 ## Install using npm :
+
 ```
 npm install jquery-address-suggestion
 ```
+
 ## How to use it ?
+
 ### HTML Example
+
 ```
 <div class="form-group col-md-12">
 	<label for="address">Address</label>
@@ -53,7 +58,8 @@ npm install jquery-address-suggestion
 ```
 ### JS Example
 ```
-$("input#address").suggest({
+// this config is used to bind field to be autocompleted, and also to internationalize labels
+var optionnalConfig = {
 	label : "Adresse complete", 
 	street_number_input : {
 		id : "number",
@@ -83,5 +89,6 @@ $("input#address").suggest({
 		id : "country",
 		label : "Pays"
 	}
-});
+};
+$("input#address").suggest(optionnalConfig);
 ```
